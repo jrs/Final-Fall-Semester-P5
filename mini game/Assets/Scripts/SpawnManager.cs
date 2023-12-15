@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        Instantiate(ememyObject, new Vector3(0, 1, 5), ememyObject.transform.rotation);
+        Instantiate(ememyObject, CreateRandomSpawnPosition(), ememyObject.transform.rotation);
     }
 
     void SpawnCollectibleObject()
