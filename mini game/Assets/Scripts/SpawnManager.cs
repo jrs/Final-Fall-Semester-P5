@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
         Instantiate(ememyObject, CreateRandomSpawnPosition(), ememyObject.transform.rotation);
     }
 
-    void SpawnCollectibleObject()
+    public void SpawnCollectibleObject()
     {
         for(int i = 0; i < coinAmount; i++)
         {
