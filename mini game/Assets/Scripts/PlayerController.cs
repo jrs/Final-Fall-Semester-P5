@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
     public AudioClip coinSound;
+    public AudioClip zombieSound;
 
     private float _horizontalInput;
     private float _forwardInput;
@@ -37,6 +38,15 @@ public class PlayerController : MonoBehaviour
         {
             _playerAudio.PlayOneShot(coinSound, 1f);
             GameObject.Find("Spawn Manager").GetComponent<SpawnManager>().SpawnCollectibleObject();
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Zombie"))
+        {
+            _playerAudio.PlayOneShot(zombieSound, 1f);
+            GameObject.Find("Canvas").GetComponent<UIManager>().GameOver();
         }
     }
 }
