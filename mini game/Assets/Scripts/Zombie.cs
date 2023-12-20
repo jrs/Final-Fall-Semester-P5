@@ -9,18 +9,24 @@ public class Zombie : MonoBehaviour
 
     private Rigidbody _zombieRb;
     private GameObject _player;
+    private SpawnManager _spawnManager;
 
     // Start is called before the first frame update
     void Start()
     {
         _zombieRb = GetComponent<Rigidbody>();
         _player = GameObject.Find("Player");
+        _spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 lookDirection = (_player.transform.position - transform.position).normalized;
-        _zombieRb.AddForce(lookDirection * speed);
+        if(_spawnManager.isGameActive)
+        {
+            Vector3 lookDirection = (_player.transform.position - transform.position).normalized;
+            _zombieRb.AddForce(lookDirection * speed);
+        }
+        
     }
 }
